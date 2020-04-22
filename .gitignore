@@ -1,0 +1,13 @@
+#general
+.DS_Store
+.nodemonignore
+.sass-cache/
+npm-debug.log
+.bower-*/
+.idea/
+node_modules/
+yarn-error.log
+
+config/local.yml
+.log.json
+.log/
