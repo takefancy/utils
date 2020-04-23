@@ -2,21 +2,41 @@
 const glob = require('glob'),
 	generate = require('nanoid');
 
+let isArray = (e) => {
+		return e && e.constructor === Array;
+	},
+	isString = (e) => {
+		return typeof e === 'string';
+	},
+	union = (x, y) => {
+		var obj = {};
+		for (var i = x.length - 1; i >= 0; --i)
+			obj[x[i]] = x[i];
+		for (var i = y.length - 1; i >= 0; --i)
+			obj[y[i]] = y[i];
+		var res = []
+		for (var k in obj) {
+			if (obj.hasOwnProperty(k)) // <-- optional
+				res.push(obj[k]);
+		}
+		return res;
+	}
+
 function match(patterns, excludes) {
 	var urlRegex = new RegExp('^(?:[a-z]+:)?\/\/', 'i');
 	var output = [];
-	if (_.isArray(patterns)) {
+	if (isArray(patterns)) {
 		patterns.forEach((e) => {
-			output = _.union(output, match(e, excludes));
+			output = union(output, match(e, excludes));
 		});
-	} else if (_.isString(patterns)) {
+	} else if (isString(patterns)) {
 		if (urlRegex.test(patterns)) {
 			output.push(patterns);
 		} else {
 			var files = glob.sync(patterns);
 			if (excludes) {
 				files = files.map((file) => {
-					if (_.isArray(excludes)) {
+					if (isArray(excludes)) {
 						for (var i in excludes) {
 							file = file.replace(excludes[i], '');
 						}
@@ -26,7 +46,7 @@ function match(patterns, excludes) {
 					return file;
 				});
 			}
-			output = _.union(output, files);
+			output = union(output, files);
 		}
 	}
 	return output;
