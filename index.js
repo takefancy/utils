@@ -1,7 +1,7 @@
 "use strict";
 const glob = require("glob"),
 	generate = require("nanoid"),
-	phone = require("phone");
+	phoneLib = require("phone");
 
 let isArray = (e) => {
 		return e && e.constructor === Array;
@@ -61,7 +61,9 @@ let phone = {
 		return "";
 	},
 	toE164: function (number, countryCode) {
-		return phone(number, countryCode || "USA")[0];
+		let a = phoneLib(number, countryCode || "USA");
+		console.log(number, countryCode, a); 
+		return phoneLib(number, countryCode || "USA")[0];
 	},
 };
 let random = {
