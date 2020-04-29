@@ -74,6 +74,11 @@ path-is-absolute@^1.0.0:
   resolved "https://registry.yarnpkg.com/path-is-absolute/-/path-is-absolute-1.0.1.tgz#174b9268735534ffbc7ace6bf53a5a9e1b5c5f5f"
   integrity sha1-F0uSaHNVNP+8es5r9TpanhtcX18=
 
+phone@^2.4.10:
+  version "2.4.10"
+  resolved "https://registry.yarnpkg.com/phone/-/phone-2.4.10.tgz#6e5335e070e90bc5004350eae96118470df323af"
+  integrity sha512-lVTu1rGahm6RYgRZyDXv3jBOvKCY5SHhLHsod2j1OtMms6ELooFoOE5K8fQMUREXlFfRWrpFDryGQ2AsB9y5cA==
+
 wrappy@1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
